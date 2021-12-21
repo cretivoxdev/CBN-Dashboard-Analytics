@@ -15,6 +15,7 @@ import sys
 import gc
 import urllib.request
 from PIL import Image
+import os
 
 gc.collect()
 
@@ -110,25 +111,30 @@ def analyst():
         truncA = int(valueA)
         print("=" * pow(6, 2))
         print(profile.get_profile_pic_url())
-        print("Username:", profile.full_name)
+        print(profile.biography)
+        print("Username", profile.full_name)
         print("Verified?:", profile.is_verified)
         print("Followers:", profile.followers)
         print("Media count:", profile.mediacount)
         print("Engagement rate:", truncA, "%")
         print("Avg likes per post:", total_num_likes / total_num_posts)
         print("=" * pow(6, 2))
-        urllib.request.urlretrieve(profile.get_profile_pic_url(), "pp.jpg")
-        img = Image.open("pp.jpg")
-        full_filename = img
+        urllib.request.urlretrieve(profile.get_profile_pic_url(), "C:/Users/creti/PycharmProjects/agis/analytics/static/pics/pp.jpg")
+        #img = Image.open("pp.jpg")
+        picfolder = os.path.join('static','pics')
+        flask_app.config['upload'] = picfolder
+        full_filename = os.path.join(flask_app.config['upload'], 'pp.jpg')
         data_ig = (
-            ("Url:", profile.get_profile_pic_url()),
             ("Username:",profile.full_name),
             ("Verified?:",profile.is_verified),
             ("Followers:",profile.followers),
             ("Media count:",profile.mediacount),
             ("Engagement rate:",str(truncA) + "%"),
-            ("Avg likes per post:",total_num_likes / total_num_posts)
+            ("Avg likes per post:",total_num_likes / total_num_posts),
+            ("Bio:",profile.biography),
+            ("External Url:",profile.external_url)
         )
+        # print(data_ig)
 
         break
 
@@ -136,7 +142,7 @@ def analyst():
     data, show_data = (pd.DataFrame(),)*2
     i = 0
     for post in (posts):
-        print("out")
+        # print("out")
         # x = {
         #     "link": "https://instagram.com/p/" + post.shortcode,
         #     "dates": post.date,
@@ -173,7 +179,18 @@ def analyst():
 
 
 
-    return render_template('index.html',data = data_ig,tables=[show_data.to_html(classes='data', index = False, col_space = 80, justify = 'center')], titles=show_data.columns.values, user_image = full_filename)
+    return render_template('index.html',
+                    usrname=data_ig[0][1],
+                    verified=data_ig[1][1],
+                    followers=data_ig[2][1],
+                    media_count=data_ig[3][1],
+                    engagement_ig=data_ig[4][1],
+                    avg_like=data_ig[5][1],
+                    bio=data_ig[6][1],
+                    url=data_ig[7][1],
+                    tables=[show_data.to_html(classes='data', index = False, col_space = 80, justify = 'center')], 
+                    titles=show_data.columns.values, 
+                    user_image = full_filename)
 
 if __name__ == "__main__":
     flask_app.run(debug=True)
