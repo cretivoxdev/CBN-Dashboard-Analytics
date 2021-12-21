@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+ <div class="login">
+	<h1 >Instgram Analytics</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('analyst')}}"method="post">
+    	<input type="text" name="UserName" placeholder="User_Name" required="required" />
+        <!-- <input type="text" name="Sepal_Width" placeholder="Sepal_Width" required="required" /> -->
+		<!-- <input type="text" name="Petal_Length" placeholder="Petal_Length" required="required" /> -->
+		<!-- <input type="text" name="Petal_Width" placeholder="Petal_Width" required="required" /> -->
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Analyst</button>
+    </form>
+
+   <br>
+   <br>
+   <!-- {{ pred }} -->
+   <table>
+       {% for row in data %}
+       <tr>
+           {% for cell in row %}
+           <td> {{cell}}</td>
+           {% endfor %}
+       </tr>
+       {% endfor %}
+       <br>
+        {% for table in tables %}
+<!--            {{titles[loop.index]}}-->
+            {{ table|safe }}
+        {% endfor %}
+   </table>
+<!--{% for table in tables %}-->
+<!--&lt;!&ndash;            {{titles[loop.index]}}&ndash;&gt;-->
+<!--            {{ table|safe }}-->
+<!--{% endfor %}-->
+ </div>
+
+
+</body>
+</html>
