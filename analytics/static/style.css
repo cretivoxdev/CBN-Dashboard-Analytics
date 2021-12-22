@@ -1,0 +1,128 @@
+.instagram {
+    background: linear-gradient(188deg, rgba(81, 91, 212, 1) 0%, rgba(129, 52, 175, 1) 30%, rgba(221, 42, 123, 1) 62%, rgba(254, 218, 119, 1) 100%, rgba(245, 133, 41, 1) 100%);
+    ;
+}
+
+h1 {
+    color: green;
+}
+
+table {
+    width: 100%;
+}
+
+.formbox {
+    padding: 50px;
+    width: auto;
+    height: auto;
+}
+
+.formbox h2 {
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 36pt;
+}
+
+img {
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+}
+
+
+/* .formSearch {
+    background: red;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+} */
+
+.profile {
+    margin-top: 30px;
+}
+
+.profile img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    scale: 0.8;
+    padding: 15px;
+}
+
+.profile .card {
+    border: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 20px;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.bio {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.945);
+}
+
+.card-body .badge {
+    padding: 10px;
+    font-size: 11px;
+}
+
+
+/* .first {
+    border-style: solid;
+    border-color: red;
+} */
+
+#night {
+    margin-top: 20px;
+}
+
+.second {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-style: solid;
+    border: none;
+    display: block;
+    height: auto;
+    background: white;
+    text-align: center;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.static {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.tableData {
+    margin-top: 20px;
+}
+
+#loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
