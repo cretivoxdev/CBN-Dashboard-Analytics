@@ -168,13 +168,15 @@ def analyst():
 
         # 12 post for the limit
         i += 1
-        if i == 11 :
+        if i == 12 :
             break
 
-
+    data.index = range(1,len(data)+1) 
+    # print(data.iloc[[0]])
+    data.drop(labels="Username")
     print(data)
-    print(data.head(5))
     show_data = data.head(12)
+    
     # break
 
 
@@ -188,6 +190,18 @@ def analyst():
                     avg_like=data_ig[5][1],
                     bio=data_ig[6][1],
                     url=data_ig[7][1],
+                    tab_1= data.iloc[[0]],
+                    tab_2= data.iloc[[1]],
+                    tab_3= data.iloc[[2]],
+                    tab_4= data.iloc[[3]],
+                    tab_5= data.iloc[[4]],
+                    tab_6= data.iloc[[5]],
+                    tab_7= data.iloc[[6]],
+                    tab_8= data.iloc[[7]],
+                    tab_9= data.iloc[[8]],
+                    tab_10= data.iloc[[9]],
+                    tab_11= data.iloc[[10]],
+                    tab_12= data.iloc[[11]],
                     tables=[show_data.to_html(classes='data', index = False, col_space = 80, justify = 'center')], 
                     titles=show_data.columns.values, 
                     user_image = full_filename)

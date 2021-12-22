@@ -17,11 +17,11 @@
     <div class="instagram d-flex align-items-center justify-content-center" style="height: 45vh;">
         <div class="formbox">
             <h2>Instagram Analytics</h2>
-            <form action="{{ url_for('analyst')}}" method="post">
+            <form name="myForm" action="{{ url_for('analyst')}}" method="post">
                 <div class="input-group mb-3">
-                    <input name="UserName" type="text" class="form-control" placeholder="Username Instagram" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input name="fname" type="text" class="form-control" placeholder="Username Instagram" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit button">Submit</button>
+                        <button onclick="return submitUsername()" class="btn btn-primary" type="submit button">Submit</button>
                     </div>
                 </div>
             </form>
@@ -69,6 +69,13 @@
     </div>
 
     <div class="container tableData login text-center">
+        <table>
+            <tr>
+                <td>
+                    {{tab_1}}
+                </td>
+            </tr>
+        </table>
         <table class="table table-striped">
             <br> {% for table in tables %}
             <!--            {{titles[loop.index]}}-->
@@ -81,6 +88,7 @@
     </div>
 
 </body>
+<script src="{{ url_for('static', filename='script.js')}}"></script>
 <footer class="text-center text-white" style="background-color: #f1f1f1; margin-top: 35px;">
     <!-- Grid container -->
     <!-- Grid container -->
