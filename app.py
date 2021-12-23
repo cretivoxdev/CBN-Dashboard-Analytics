@@ -173,9 +173,9 @@ def analyst():
 
     data.index = range(1,len(data)+1) 
     # print(data.iloc[[0]])
-    data.drop(labels="Username")
+    
     print(data)
-    show_data = data.head(12)
+    # show_data = data.head(12)
     
     # break
 
@@ -184,7 +184,7 @@ def analyst():
     return render_template('index.html',
                     usrname=data_ig[0][1],
                     verified=data_ig[1][1],
-                    followers=data_ig[2][1],
+                    followers=(f"{data_ig[2][1]:,}"),
                     media_count=data_ig[3][1],
                     engagement_ig=data_ig[4][1],
                     avg_like=data_ig[5][1],
@@ -202,8 +202,8 @@ def analyst():
                     tab_10= data.iloc[[9]],
                     tab_11= data.iloc[[10]],
                     tab_12= data.iloc[[11]],
-                    tables=[show_data.to_html(classes='data', index = False, col_space = 80, justify = 'center')], 
-                    titles=show_data.columns.values, 
+                    tables=[data.to_html(classes='data', col_space = 80, justify = 'center', table_id="table")], 
+                    titles=data.columns.values, 
                     user_image = full_filename)
 
 if __name__ == "__main__":
