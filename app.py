@@ -98,6 +98,9 @@ def analyst():
     total_num_likes = 0
     total_num_comments = 0
     total_num_posts = 0
+    valueA = []
+    truncA = 0
+    i = 0
     #data_ig = pd.DataFrame()
 
     for post in profile.get_posts():
@@ -107,8 +110,10 @@ def analyst():
 
         engagement = float(total_num_likes + total_num_comments) / (num_followers * total_num_posts)
         # Integer
-        valueA = engagement * 100
-        truncA = int(valueA)
+        # print(valueA)
+        valueA.append(engagement * 100)
+
+        # truncA = int(valueA)
         print("=" * pow(6, 2))
         print(profile.get_profile_pic_url())
         print(profile.biography)
@@ -119,24 +124,30 @@ def analyst():
         print("Engagement rate:", truncA, "%")
         print("Avg likes per post:", total_num_likes / total_num_posts)
         print("=" * pow(6, 2))
-        urllib.request.urlretrieve(profile.get_profile_pic_url(), "C:/Users/creti/PycharmProjects/agis/analytics/static/pics/pp.jpg")
+        urllib.request.urlretrieve(profile.get_profile_pic_url(), "C:/Users/creti/PycharmProjects/agis/analytics/static/pics/pp2.jpg")
         #img = Image.open("pp.jpg")
-        picfolder = os.path.join('static','pics')
+        picfolder = os.path.join('static', 'pics')
         flask_app.config['upload'] = picfolder
-        full_filename = os.path.join(flask_app.config['upload'], 'pp.jpg')
-        data_ig = (
-            ("Username:",profile.full_name),
-            ("Verified?:",profile.is_verified),
-            ("Followers:",profile.followers),
-            ("Media count:",profile.mediacount),
-            ("Engagement rate:",str(truncA) + "%"),
-            ("Avg likes per post:",total_num_likes / total_num_posts),
-            ("Bio:",profile.biography),
-            ("External Url:",profile.external_url)
-        )
+        full_filename = os.path.join(flask_app.config['upload'], 'pp2.jpg')
+
         # print(data_ig)
 
-        break
+        if i == 11:
+            truncA = sum(valueA)/12
+            data_ig = (
+                ("Username:", profile.full_name),
+                ("Verified?:", profile.is_verified),
+                ("Followers:", profile.followers),
+                ("Media count:", profile.mediacount),
+                ("Engagement rate:", ("%.1f" % truncA) + "%"),
+                ("Avg likes per post:", int(total_num_likes / total_num_posts)),
+                ("Bio:", profile.biography),
+                ("External Url:", profile.external_url)
+            )
+
+            break
+
+        i += 1
 
 
     data, show_data = (pd.DataFrame(),)*2
@@ -190,18 +201,18 @@ def analyst():
                     avg_like=data_ig[5][1],
                     bio=data_ig[6][1],
                     url=data_ig[7][1],
-                    tab_1= data.iloc[[0]],
-                    tab_2= data.iloc[[1]],
-                    tab_3= data.iloc[[2]],
-                    tab_4= data.iloc[[3]],
-                    tab_5= data.iloc[[4]],
-                    tab_6= data.iloc[[5]],
-                    tab_7= data.iloc[[6]],
-                    tab_8= data.iloc[[7]],
-                    tab_9= data.iloc[[8]],
-                    tab_10= data.iloc[[9]],
-                    tab_11= data.iloc[[10]],
-                    tab_12= data.iloc[[11]],
+                    tab_1= str(data.iloc[[0]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_2= str(data.iloc[[1]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_3= str(data.iloc[[2]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_4= str(data.iloc[[3]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_5= str(data.iloc[[4]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_6= str(data.iloc[[5]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_7= str(data.iloc[[6]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_8= str(data.iloc[[7]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_9= str(data.iloc[[8]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_10= str(data.iloc[[9]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_11= str(data.iloc[[10]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
+                    tab_12= str(data.iloc[[11]]).replace("Link", "").replace("Dates","").replace("Likes","").replace("Comments","").replace("Views",""),
                     tables=[data.to_html(classes='data', col_space = 80, justify = 'center', table_id="table")], 
                     titles=data.columns.values, 
                     user_image = full_filename)

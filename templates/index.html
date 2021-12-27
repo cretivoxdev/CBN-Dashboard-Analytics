@@ -68,14 +68,40 @@
         </div>
     </div>
 
+
     <div class="container tableData login text-center">
-        <!-- <table>
-            <tr>
-                <td>
-                    {{tab_1}}
-                </td>
-            </tr>
-        </table> -->
+        <h1>Last 12 Posts</h1>
+        <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Link</th>
+      <th scope="col">Dates</th>
+      <th scope="col">Likes</th>
+        <th scope="col">Likes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
         <table class="table table-striped">
             <br> {% for table in tables %} {{ table|safe }} {% endfor %}
         </table>
