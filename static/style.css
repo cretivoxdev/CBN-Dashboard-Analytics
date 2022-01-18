@@ -1,128 +1,127 @@
-.instagram {
-    background: linear-gradient(188deg, rgba(81, 91, 212, 1) 0%, rgba(129, 52, 175, 1) 30%, rgba(221, 42, 123, 1) 62%, rgba(254, 218, 119, 1) 100%, rgba(245, 133, 41, 1) 100%);
-    ;
-}
-
-h1 {
-    color: green;
-}
-
-table {
-    width: 100%;
-}
-
-.formbox {
+.searchArea {
     padding: 50px;
-    width: auto;
-    height: auto;
 }
 
-.formbox h2 {
-    margin-bottom: 20px;
-    color: white;
-    font-weight: 600;
-    font-size: 36pt;
+p {
+    margin: 0;
 }
 
-img {
-    border-radius: 100%;
-    width: 150px;
-    height: 150px;
+body {
+    background: rgba(0, 0, 0, 0.021);
 }
 
-
-/* .formSearch {
-    background: red;
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
-} */
-
-.profile {
-    margin-top: 30px;
-}
-
-.profile img {
-    height: 200px;
-    width: 200px;
-    border-radius: 100%;
-    scale: 0.8;
-    padding: 15px;
-}
-
-.profile .card {
+.card {
     border: none;
+    background: white;
+    border-radius: 25px;
+    padding: 10px 0 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    border-radius: 20px;
-}
-
-.card-title {
-    font-weight: 600;
-    font-size: 24px;
 }
 
 .bio {
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.945);
+    text-transform: capitalize;
 }
 
-.card-body .badge {
-    padding: 10px;
-    font-size: 11px;
-}
-
-
-/* .first {
-    border-style: solid;
-    border-color: red;
-} */
-
-#night {
-    margin-top: 20px;
-}
-
-.second {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    border-style: solid;
-    border: none;
-    display: block;
-    height: auto;
-    background: white;
-    text-align: center;
-    border-radius: 15px;
-    padding: 15px;
-}
-
-.static {
-    font-size: 36px;
+h2,
+h3 {
     font-weight: 600;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
-.tableData {
-    margin-top: 20px;
+p {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
-#loader {
-    border: 12px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 12px solid #444444;
-    width: 70px;
-    height: 70px;
-    animation: spin 1s linear infinite;
+.danger {
+    color: #f6c954;
 }
 
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
+.primary {
+    color: #0062ff;
+}
+
+.info {
+    color: #f6c954;
+}
+
+.success {
+    color: #289f64;
+}
+
+
+/* Media Query */
+
+
+/* Media Query for Mobile Devices */
+
+@media (max-width: 480px) {
+    .searchArea {
+        padding: 5px;
     }
 }
 
-.center {
-    position: absolute;
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .searchArea {
+        padding: 5px;
+        margin-top: 20px;
+    }
+}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .searchArea {
+        padding: 5px;
+        margin-top: 20px;
+    }
+}
+
+
+/* Media Query for Laptops and Desktops */
+
+@media (min-width: 1025px) and (max-width: 1280px) {}
+
+
+/* Media Query for Large screens */
+
+@media (min-width: 1281px) {}
+
+
+/* Loading */
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
-    margin: auto;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.8) url("loader.gif") center no-repeat;
+}
+
+
+/* Turn off scrollbar when body element has the loading class */
+
+body.loading {
+    overflow: hidden;
+}
+
+
+/* Make spinner image visible when body element has the loading class */
+
+body.loading .overlay {
+    display: block;
+}
+
+table table-striped {
+    background: red;
 }

@@ -124,7 +124,7 @@ def analyst():
         print("Engagement rate:", truncA, "%")
         print("Avg likes per post:", total_num_likes / total_num_posts)
         print("=" * pow(6, 2))
-        urllib.request.urlretrieve(profile.get_profile_pic_url(), "C:/Users/creti/PycharmProjects/agis/analytics/static/pics/pp2.jpg")
+        urllib.request.urlretrieve(profile.get_profile_pic_url(), "D:/Coding/dashboard-analytics/agis/static/pics/pp2.jpg")
         #img = Image.open("pp.jpg")
         picfolder = os.path.join('static', 'pics')
         flask_app.config['upload'] = picfolder
